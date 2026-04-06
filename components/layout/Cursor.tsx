@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null)
@@ -8,8 +8,31 @@ export default function Cursor() {
   const pos = useRef({ x: 0, y: 0 })
   const ring = useRef({ x: 0, y: 0 })
   const raf = useRef<number>(0)
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
 
   useEffect(() => {
+    // Detect if device supports touch (phones/tablets)
+    const checkTouchDevice = () => {
+      const hasTouch = 'ontouchstart' in window || 
+                       navigator.maxTouchPoints > 0 || 
+                       (navigator as any).msMaxTouchPoints > 0
+      setIsTouchDevice(hasTouch)
+      return hasTouch
+    }
+
+    const isTouch = checkTouchDevice()
+    
+    // If it's a touch device, hide custom cursor and return early
+    if (isTouch) {
+      if (dotRef.current) dotRef.current.style.display = 'none'
+      if (ringRef.current) ringRef.current.style.display = 'none'
+      return
+    }
+
+    // Show cursor on non-touch devices
+    if (dotRef.current) dotRef.current.style.display = 'block'
+    if (ringRef.current) ringRef.current.style.display = 'block'
+
     const move = (e: MouseEvent) => {
       pos.current = { x: e.clientX, y: e.clientY }
       if (dotRef.current) {
@@ -36,14 +59,18 @@ export default function Cursor() {
     // Scale on hover
     const addHover = (el: Element) => {
       el.addEventListener('mouseenter', () => {
-        dotRef.current && (dotRef.current.style.transform = 'scale(2)')
-        ringRef.current && (ringRef.current.style.transform = 'scale(1.5)')
-        ringRef.current && (ringRef.current.style.borderColor = 'rgba(200,169,110,0.8)')
+        if (dotRef.current) dotRef.current.style.transform = 'scale(2)'
+        if (ringRef.current) {
+          ringRef.current.style.transform = 'scale(1.5)'
+          ringRef.current.style.borderColor = 'rgba(200,169,110,0.8)'
+        }
       })
       el.addEventListener('mouseleave', () => {
-        dotRef.current && (dotRef.current.style.transform = 'scale(1)')
-        ringRef.current && (ringRef.current.style.transform = 'scale(1)')
-        ringRef.current && (ringRef.current.style.borderColor = 'rgba(200,169,110,0.4)')
+        if (dotRef.current) dotRef.current.style.transform = 'scale(1)'
+        if (ringRef.current) {
+          ringRef.current.style.transform = 'scale(1)'
+          ringRef.current.style.borderColor = 'rgba(200,169,110,0.4)'
+        }
       })
     }
 
@@ -54,6 +81,9 @@ export default function Cursor() {
       cancelAnimationFrame(raf.current)
     }
   }, [])
+
+  // Don't render anything on touch devices
+  if (isTouchDevice) return null
 
   return (
     <>

@@ -82,15 +82,15 @@ export default function Hero() {
                 flexShrink: 0,
               }}
             >
-              <motion.div style={{ y: imgParallax, height: '115%', width: '100%', position: 'absolute', top: 0, left: 0 }}>
+              <motion.div style={{ y: imgParallax, height: '100%', width: '100%', position: 'absolute', top: 0, left: 0 }}>
                 <Image
                   src="/bio.jpg"
                   alt="Nandan Patel"
                   fill
                   priority
                   style={{
-                    objectFit: 'cover',
-                    objectPosition: 'center 15%',
+                    objectFit: 'contain',
+                    objectPosition: 'center',
                     filter: 'contrast(1.05) brightness(0.95)',
                   }}
                 />
@@ -148,7 +148,7 @@ export default function Hero() {
                   fontSize: 'clamp(72px, 22vw, 120px)',
                   lineHeight: 0.88,
                   marginBottom: 0,
-                  marginTop: 0,  // FIXED: Changed from -16 to 0
+                  marginTop: 0,
                 }}
               >
                 <span style={{ display: 'block', color: 'var(--off-white)' }}>NANDAN</span>
@@ -224,13 +224,12 @@ export default function Hero() {
                     <span>Contact</span>
                   </a>
                   <a
-                    href={personalInfo.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/resume.pdf"
+                    download="Nandan_Patel_Resume.pdf"
                     className="btn"
                     style={{ flex: 1, justifyContent: 'center' }}
                   >
-                    <span>GitHub</span>
+                    <span>Resume</span>
                   </a>
                 </div>
               </motion.div>
@@ -319,8 +318,8 @@ export default function Hero() {
                   onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
                   <span>Contact</span>
                 </a>
-                <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="btn">
-                  <span>GitHub</span>
+                <a href="/resume.pdf" download="Nandan_Patel_Resume.pdf" className="btn">
+                  <span>Resume</span><span>↓</span>
                 </a>
               </motion.div>
 
@@ -351,15 +350,15 @@ export default function Hero() {
                 background: 'linear-gradient(180deg, transparent, rgba(200,169,110,0.2), rgba(120,180,220,0.12), transparent)',
                 zIndex: 3,
               }} />
-              <motion.div style={{ y: imgParallax, height: '110%', width: '100%', position: 'absolute', top: '-5%' }}>
+              <motion.div style={{ y: imgParallax, height: '100%', width: '100%', position: 'absolute', top: 0, left: 0 }}>
                 <Image
                   src="/bio.jpg"
                   alt="Nandan Patel"
                   fill
                   priority
                   style={{
-                    objectFit: 'cover',
-                    objectPosition: 'center 10%',
+                    objectFit: 'contain',
+                    objectPosition: 'center',
                     filter: 'contrast(1.04) brightness(0.97)',
                   }}
                 />
@@ -494,8 +493,8 @@ export default function Hero() {
                   onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
                   <span>Get in Touch</span>
                 </a>
-                <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="btn">
-                  <span>GitHub</span>
+                <a href="/resume.pdf" download="Nandan_Patel_Resume.pdf" className="btn">
+                  <span>Resume</span><span style={{ fontSize: 14 }}>↓</span>
                 </a>
               </motion.div>
 
@@ -545,15 +544,15 @@ export default function Hero() {
               }} />
 
               {/* Photo — parallax via motion.div wrapper, fill the column */}
-              <motion.div style={{ y: imgParallax, height: '110%', width: '100%', position: 'absolute', top: '-5%' }}>
+              <motion.div style={{ y: imgParallax, height: '100%', width: '100%', position: 'absolute', top: 0, left: 0 }}>
                 <Image
                   src="/bio.jpg"
                   alt="Nandan Patel — AI Engineer"
                   fill
                   priority
                   style={{
-                    objectFit: 'cover',
-                    objectPosition: 'center 12%',
+                    objectFit: 'contain',
+                    objectPosition: 'center',
                     filter: 'contrast(1.05) brightness(0.95)',
                   }}
                 />

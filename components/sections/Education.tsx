@@ -7,30 +7,72 @@ import { education, certifications } from '@/lib/data'
 
 export default function Education() {
   return (
-    <section id="education" className="section" style={{ background: '#000', position: 'relative', overflow: 'hidden' }}>
+    <section
+      id="education"
+      className="section"
+      style={{
+        background: '#000',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
       <LiquidCanvas style={{ opacity: 0.45 }} />
       <IridescentLine style={{ top: 0, left: 0 }} />
 
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+      <div className="container" style={{ position: 'relative', zIndex: 1, overflowX: 'hidden' }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 64 }}
+          style={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            justifyContent: 'space-between',
+            marginBottom: 64,
+            flexWrap: 'wrap',
+            gap: 20,
+          }}
         >
           <div>
-            <p className="text-label" style={{ color: 'var(--accent)', marginBottom: 12 }}>08 / Education</p>
-            <h2 className="display text-xl" style={{ color: 'var(--off-white)' }}>Education &amp;<br />Certifications</h2>
+            <p
+              className="text-label"
+              style={{ color: 'var(--accent)', marginBottom: 12 }}
+            >
+              08 / Education
+            </p>
+            <h2
+              className="display text-xl"
+              style={{ color: 'var(--off-white)' }}
+            >
+              Education &amp;<br />Certifications
+            </h2>
           </div>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 48 }}>
-
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: 48,
+          }}
+        >
           {/* Degrees */}
-          <div>
-            <p className="text-label" style={{ color: 'var(--gray-600)', marginBottom: 24 }}>Degrees</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 1, border: '1px solid rgba(255,255,255,0.07)' }}>
+          <div style={{ minWidth: 0 }}>
+            <p
+              className="text-label"
+              style={{ color: 'var(--gray-600)', marginBottom: 24 }}
+            >
+              Degrees
+            </p>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 1,
+                border: '1px solid rgba(255,255,255,0.07)',
+              }}
+            >
               {education.map((edu, i) => (
                 <motion.div
                   key={edu.degree}
@@ -39,30 +81,84 @@ export default function Education() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  style={{ padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: 0 }}
+                  style={{
+                    padding: '28px 24px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 0,
+                  }}
                 >
                   <div className="card-accent-line" />
 
                   {/* Top */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
-                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'flex-start',
+                      marginBottom: 16,
+                      flexWrap: 'wrap',
+                      gap: 12,
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: 10,
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                        color: 'var(--accent)',
+                      }}
+                    >
                       {edu.period}
                     </p>
-                    <span className="display" style={{ fontSize: 22, color: 'var(--accent)', letterSpacing: '0.02em' }}>
+                    <span
+                      className="display"
+                      style={{
+                        fontSize: 22,
+                        color: 'var(--accent)',
+                        letterSpacing: '0.02em',
+                      }}
+                    >
                       {edu.gpa}
                     </span>
                   </div>
 
                   {/* Degree */}
-                  <h3 className="display" style={{ fontSize: 22, color: 'var(--off-white)', lineHeight: 1, letterSpacing: '0.02em', marginBottom: 8 }}>
+                  <h3
+                    className="display"
+                    style={{
+                      fontSize: 22,
+                      color: 'var(--off-white)',
+                      lineHeight: 1.2,
+                      letterSpacing: '0.02em',
+                      marginBottom: 8,
+                    }}
+                  >
                     {edu.degree}
                   </h3>
 
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gray-400)', marginBottom: 4 }}>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: 12,
+                      color: 'var(--gray-400)',
+                      marginBottom: 4,
+                      wordBreak: 'break-word',
+                    }}
+                  >
                     {edu.institution}
                   </p>
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--gray-600)' }}>
-                    {edu.location}{edu.note ? ` · ${edu.note}` : ''}
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: 11,
+                      color: 'var(--gray-600)',
+                      wordBreak: 'break-word',
+                    }}
+                  >
+                    {edu.location}
+                    {edu.note ? ` · ${edu.note}` : ''}
                   </p>
                 </motion.div>
               ))}
@@ -70,9 +166,21 @@ export default function Education() {
           </div>
 
           {/* Certifications */}
-          <div>
-            <p className="text-label" style={{ color: 'var(--gray-600)', marginBottom: 24 }}>Certifications</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 1, border: '1px solid rgba(255,255,255,0.07)' }}>
+          <div style={{ minWidth: 0 }}>
+            <p
+              className="text-label"
+              style={{ color: 'var(--gray-600)', marginBottom: 24 }}
+            >
+              Certifications
+            </p>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 1,
+                border: '1px solid rgba(255,255,255,0.07)',
+              }}
+            >
               {certifications.map((cert, i) => (
                 <motion.div
                   key={cert.name}
@@ -81,26 +189,80 @@ export default function Education() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  style={{ padding: '28px 24px', display: 'flex', flexDirection: 'column', minHeight: 120 }}
+                  style={{
+                    padding: '28px 24px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    minHeight: 120,
+                  }}
                 >
                   <div className="card-accent-line" />
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
-                    <h4 className="display" style={{ fontSize: 20, color: 'var(--off-white)', lineHeight: 1.1, letterSpacing: '0.02em', maxWidth: '75%' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'flex-start',
+                      marginBottom: 12,
+                      gap: 12,
+                      flexWrap: 'wrap',
+                    }}
+                  >
+                    <h4
+                      className="display"
+                      style={{
+                        fontSize: 20,
+                        color: 'var(--off-white)',
+                        lineHeight: 1.2,
+                        letterSpacing: '0.02em',
+                        flex: 1,
+                        minWidth: 0,
+                        wordBreak: 'break-word',
+                      }}
+                    >
                       {cert.name}
                     </h4>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--gray-600)', letterSpacing: '0.06em', flexShrink: 0 }}>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: 10,
+                        color: 'var(--gray-600)',
+                        letterSpacing: '0.06em',
+                        flexShrink: 0,
+                      }}
+                    >
                       {cert.date}
                     </span>
                   </div>
 
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--accent)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: cert.skills.length ? 12 : 0 }}>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: 11,
+                      color: 'var(--accent)',
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      marginBottom: cert.skills.length ? 12 : 0,
+                      wordBreak: 'break-word',
+                    }}
+                  >
                     {cert.issuer}
                   </p>
 
                   {cert.skills.length > 0 && (
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 4 }}>
-                      {cert.skills.map((s) => <span key={s} className="tag">{s}</span>)}
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: 5,
+                        marginTop: 4,
+                      }}
+                    >
+                      {cert.skills.map((s) => (
+                        <span key={s} className="tag">
+                          {s}
+                        </span>
+                      ))}
                     </div>
                   )}
                 </motion.div>

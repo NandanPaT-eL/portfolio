@@ -2,18 +2,18 @@ export const personalInfo = {
   name: 'Nandan Patel',
   fullName: 'Nandan Alpesh Patel',
   title: 'AI Engineer',
-  subtitle: 'Computer Vision · Agentic AI · Embedded Systems · Deep Learning',
-  location: 'Bharuch, Gujarat, India',
+  subtitle: 'Computer Vision · Embedded Systems · Deep Learning · Web Dev',
+  location: 'Ahmedabad, Gujarat, India',
   email: 'napassociate@gmail.com',
   phone: '+91-9426268778',
   github: 'https://github.com/NandanPaT-eL',
   linkedin: 'https://www.linkedin.com/in/patel-nandan',
-  bio: 'Final-year Computer Engineering student at GCET building production-grade AI systems. Currently at ISRO Space Applications Centre researching generative models for PCB defect synthesis. I work across the full spectrum — from GAN-based data pipelines and RAG chatbots to underwater ROVs and enterprise automation MVPs.',
+  bio: 'Final-year Computer Engineering student at GCET building production-grade AI systems. Currently at ISRO Space Applications Centre researching generative models for PCB defect synthesis. I work across the full spectrum from GAN-based data pipelines and RAG chatbots to underwater ROVs and enterprise automation MVPs.',
 }
 
 export const stats = [
   { value: 'ISRO', label: 'Current' },
-  { value: '9.56', label: 'CGPA' },
+  { value: '9.57', label: 'CGPA' },
   { value: '3.5L', label: 'Grants Won' },
   { value: '5+', label: 'Internships' },
 ]
@@ -76,7 +76,7 @@ export const hackathons = [
     id: '5g',
     index: '01',
     title: '5G Innovation Hackathon',
-    award: 'Winner — 1 Lakh INR',
+    award: 'Finalist — 1.0 Lakh INR Grant',
     organizer: 'Dept. of Telecommunications, Govt. of India',
     description: 'Developed a complete biomedical signal orchestration pipeline. EMG and EOG signals extracted from body-deployed sensor nodes (Arduino R1 + ESP32), streamed in real-time to a Raspberry Pi, classified using signal processing algorithms, and used to actuate a robotic arm with precise movement control — fully hands-free, intent-driven.',
     stack: ['Arduino R1', 'ESP32', 'Raspberry Pi', 'Python', 'Signal Processing', 'EMG/EOG', 'Real-time Classification', 'Robotics'],
@@ -147,7 +147,7 @@ export const freelance = [
     title: 'Automate Pro',
     subtitle: 'Enterprise Document Automation',
     category: 'Full Stack MVP',
-    period: 'Ongoing',
+    period: 'January 2026 - Ongoing',
     status: 'In Development',
     description: 'MERN stack MVP for enterprise document processing. Two processing bots: Item Document Processing (manual/SFTP/FTP upload, queue management, Gemini OCR, part number extraction, LN validation, Infor IDM upload) and AP Invoice Bot (cost-based and order-based processing, ION API validation, invoice registration). Includes RAG bot for process Q&A. N-superuser auth system with 2-hour expiring access tokens.',
     stack: ['MongoDB', 'Express', 'React', 'Node.js', 'Docker', 'Redis', 'BullMQ', 'Gemini API', 'RAG', 'REST APIs', 'SFTP/FTP'],
@@ -206,39 +206,25 @@ export const techStack = [
 
 export const achievements = [
   {
-    id: 'isro',
-    index: '01',
-    title: 'ISRO SAC',
-    subtitle: 'Machine Learning Intern',
-    description: "Selected for ML research at India's premier space research organisation, Space Applications Centre, ISRO.",
-  },
-  {
     id: 'paper',
-    index: '02',
+    index: '01',
     title: 'Published Research',
     subtitle: 'Peer-Reviewed Journal',
     description: 'Research paper on multi-class skin cancer classification using ResNet50 transfer learning accepted and published.',
   },
   {
     id: 'robofest',
-    index: '03',
+    index: '02',
     title: 'Robofest 4.0 Finalist',
     subtitle: '2.5 Lakh INR Grant',
     description: 'Led KRAKEN underwater ROV team to national finals securing competitive research and development grant funding.',
   },
   {
     id: '5g',
-    index: '04',
+    index: '03',
     title: '5G Hackathon Winner',
     subtitle: '1 Lakh INR Seed Funding',
     description: 'First place and seed funding for biomedical signal orchestration pipeline at DoT, Government of India hackathon.',
-  },
-  {
-    id: 'cgpa',
-    index: '05',
-    title: 'CGPA 9.56 / 10',
-    subtitle: 'Computer Engineering',
-    description: 'Maintaining distinction-level academic performance across all semesters at G.H. Patel College of Engineering.',
   },
   {
     id: 'sap',
@@ -255,8 +241,8 @@ export const education = [
     institution: 'G. H. Patel College of Engineering & Technology',
     location: 'Anand, Gujarat',
     period: '2022 — 2026',
-    gpa: '9.56 / 10',
-    note: 'up to VI Semester',
+    gpa: '9.57 / 10',
+    note: 'up to VII Semester',
   },
   {
     degree: 'Minor — Internet of Things',
@@ -270,6 +256,6 @@ export const education = [
 
 export const certifications = [
   { name: 'SAP Advanced Certification', issuer: 'SAP', date: 'April 2025', skills: ['Machine Learning', 'IoT', 'Deep Learning', 'Computer Vision', 'ABAP'] },
-  { name: 'Introduction to Programming Using Python', issuer: 'Microsoft', date: '2023', skills: [] },
+  { name: 'Introduction to Programming Using Python', issuer: 'HackerRank', date: '2023', skills: [] },
   { name: 'Data Analytics Job Simulation', issuer: 'Deloitte Australia', date: '2023', skills: [] },
 ]

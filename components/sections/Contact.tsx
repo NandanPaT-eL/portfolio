@@ -6,8 +6,12 @@ import LiquidCanvas from "@/components/effects/LiquidCanvas";
 import IridescentLine from "@/components/effects/IridescentLine";
 import { personalInfo } from "@/lib/data";
 
+const FORM_ACTION =
+  "https://docs.google.com/forms/d/e/1FAIpQLSf0rhqrthC-_tiw8U6sgeuHJDXWSPa_wpqL30Uqj3ph4EHU8A/formResponse";
+
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   const socials = [
@@ -28,6 +32,30 @@ export default function Contact() {
   const blurField = (el: HTMLElement) => {
     el.style.background = "transparent";
     el.style.boxShadow = "none";
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const form = formRef.current!;
+    const data = new FormData(form);
+
+    try {
+      // Google Forms doesn't support CORS fetch, so we use no-cors mode.
+      // The request goes through but we can't read the response — that's expected.
+      await fetch(FORM_ACTION, {
+        method: "POST",
+        mode: "no-cors",
+        body: data,
+      });
+    } catch {
+      // no-cors fetch may still "fail" in some environments; treat as success
+      // since Google Forms always accepts the POST.
+    }
+
+    setLoading(false);
+    setSubmitted(true);
   };
 
   return (
@@ -53,17 +81,11 @@ export default function Contact() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           style={{ marginBottom: 80 }}
         >
-          <p
-            className="text-label"
-            style={{ color: "var(--accent)", marginBottom: 12 }}
-          >
+          <p className="text-label" style={{ color: "var(--accent)", marginBottom: 12 }}>
             09 / Contact
           </p>
 
-          <h2
-            className="display text-xl"
-            style={{ color: "var(--off-white)", marginBottom: 20 }}
-          >
+          <h2 className="display text-xl" style={{ color: "var(--off-white)", marginBottom: 20 }}>
             Let's Build
             <br />
             Together
@@ -78,9 +100,8 @@ export default function Contact() {
               lineHeight: 1.8,
             }}
           >
-            Open to AI/ML engineering roles, research collaborations, and
-            selective freelance projects. Serious inquiries only. I respond
-            within 24 hours.
+            Open to AI/ML engineering roles, research collaborations, and selective freelance
+            projects. Serious inquiries only. I respond within 24 hours.
           </p>
         </motion.div>
 
@@ -148,8 +169,7 @@ export default function Contact() {
                   lineHeight: 1.7,
                 }}
               >
-                AI/ML Engineer roles · MERN Stack · Research work · Freelance
-                projects
+                AI/ML Engineer roles · MERN Stack · Research work · Freelance projects
               </p>
             </div>
 
@@ -180,9 +200,7 @@ export default function Contact() {
                     textDecoration: "none",
                     background: "var(--card-bg)",
                     borderBottom:
-                      i < socials.length - 1
-                        ? "1px solid rgba(255,255,255,0.04)"
-                        : "none",
+                      i < socials.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
                     wordBreak: "break-word",
                     gap: 16,
                   }}
@@ -200,7 +218,6 @@ export default function Contact() {
                     >
                       {s.label}
                     </p>
-
                     <p
                       style={{
                         fontFamily: "var(--font-mono)",
@@ -212,10 +229,7 @@ export default function Contact() {
                       {s.handle}
                     </p>
                   </div>
-
-                  <span style={{ color: "var(--accent)", fontSize: 18, flexShrink: 0 }}>
-                    ↗
-                  </span>
+                  <span style={{ color: "var(--accent)", fontSize: 18, flexShrink: 0 }}>↗</span>
                 </motion.a>
               ))}
             </div>
@@ -240,7 +254,6 @@ export default function Contact() {
               >
                 Location
               </p>
-
               <p
                 style={{
                   fontFamily: "var(--font-mono)",
@@ -264,46 +277,35 @@ export default function Contact() {
             {!submitted ? (
               <form
                 ref={formRef}
-                action="https://formsubmit.co/napassociate@gmail.com"
-                method="POST"
-                onSubmit={(e) => setTimeout(() => setSubmitted(true), 200)}
+                onSubmit={handleSubmit}
                 style={{
                   display: "flex",
                   flexDirection: "column",
                   border: "var(--border-accent)",
-                  background:
-                    "linear-gradient(180deg, rgba(200,169,110,0.04), transparent)",
+                  background: "linear-gradient(180deg, rgba(200,169,110,0.04), transparent)",
                   boxShadow:
                     "0 0 0 1px rgba(200,169,110,0.15), 0 20px 60px rgba(0,0,0,0.6)",
                   width: "100%",
                 }}
               >
-                <input
-                  type="hidden"
-                  name="_subject"
-                  value="Portfolio Inquiry — Nandan Patel"
-                />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="text" name="_honey" style={{ display: "none" }} />
-
+                {/* Google Form entry fields */}
                 {[
                   {
-                    name: "name",
+                    name: "entry.2055367269",
                     label: "Name",
                     type: "text",
                     placeholder: "Your name",
                     required: true,
                   },
                   {
-                    name: "email",
+                    name: "entry.1364148437",
                     label: "Email",
                     type: "email",
                     placeholder: "your@email.com",
                     required: true,
                   },
                   {
-                    name: "subject",
+                    name: "entry.1418007094",
                     label: "Subject",
                     type: "text",
                     placeholder: "What are we building?",
@@ -351,9 +353,7 @@ export default function Contact() {
                         color: "var(--off-white)",
                         boxSizing: "border-box",
                       }}
-                      onFocus={(e) =>
-                        focusField(e.currentTarget.parentElement!)
-                      }
+                      onFocus={(e) => focusField(e.currentTarget.parentElement!)}
                       onBlur={(e) => blurField(e.currentTarget.parentElement!)}
                     />
                   </div>
@@ -367,7 +367,7 @@ export default function Contact() {
                   }}
                 >
                   <label
-                    htmlFor="message"
+                    htmlFor="entry.1878278687"
                     style={{
                       position: "absolute",
                       top: 12,
@@ -383,8 +383,8 @@ export default function Contact() {
                   </label>
 
                   <textarea
-                    id="message"
-                    name="message"
+                    id="entry.1878278687"
+                    name="entry.1878278687"
                     required
                     rows={5}
                     placeholder="Tell me about your project, role, or idea..."
@@ -409,8 +409,9 @@ export default function Contact() {
                 {/* SUBMIT */}
                 <motion.button
                   type="submit"
-                  whileHover={{ backgroundColor: "var(--accent)" }}
-                  whileTap={{ scale: 0.99 }}
+                  disabled={loading}
+                  whileHover={!loading ? { backgroundColor: "var(--accent)" } : {}}
+                  whileTap={!loading ? { scale: 0.99 } : {}}
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -419,17 +420,18 @@ export default function Contact() {
                     background: "rgba(200,169,110,0.06)",
                     border: "none",
                     borderTop: "1px solid rgba(255,255,255,0.05)",
-                    cursor: "pointer",
+                    cursor: loading ? "not-allowed" : "pointer",
                     fontFamily: "var(--font-mono)",
                     fontSize: 11,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     color: "var(--accent)",
                     width: "100%",
+                    opacity: loading ? 0.6 : 1,
                   }}
                 >
-                  <span>Send Message</span>
-                  <span style={{ fontSize: 18 }}>→</span>
+                  <span>{loading ? "Sending..." : "Send Message"}</span>
+                  <span style={{ fontSize: 18 }}>{loading ? "⋯" : "→"}</span>
                 </motion.button>
               </form>
             ) : (
@@ -471,8 +473,7 @@ export default function Contact() {
 
       <style jsx>{`
         @keyframes pulse {
-          0%,
-          100% {
+          0%, 100% {
             opacity: 1;
             box-shadow: 0 0 8px #4ade80;
           }

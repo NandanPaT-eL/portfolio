@@ -14,6 +14,8 @@ import Education from '@/components/sections/Education'
 import Contact from '@/components/sections/Contact'
 import Footer from '@/components/sections/Footer'
 
+import { Analytics } from "@vercel/analytics/next"
+
 const Cursor = dynamic(() => import('@/components/layout/Cursor'), { ssr: false })
 
 export default function Home() {
@@ -37,6 +39,7 @@ export default function Home() {
       <Cursor />
       <Nav />
       <main>
+
         <Hero />
 
         {/* Thin iridescent divider between every section */}
@@ -65,6 +68,8 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+
+      <Analytics/> 
     </>
   )
 }

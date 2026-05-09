@@ -224,7 +224,7 @@ export default function Hero() {
                     <span>Contact</span>
                   </a>
                   <a
-                    href="/resume.pdf"
+                    href="/Nandan_Patel_Resume.pdf"
                     download="Nandan_Patel_Resume.pdf"
                     className="btn"
                     style={{ flex: 1, justifyContent: 'center' }}
@@ -318,7 +318,7 @@ export default function Hero() {
                   onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
                   <span>Contact</span>
                 </a>
-                <a href="/resume.pdf" download="Nandan_Patel_Resume.pdf" className="btn">
+                <a href="/Nandan_Patel_Resume.pdf" download="Nandan_Patel_Resume.pdf" className="btn">
                   <span>Resume</span><span>↓</span>
                 </a>
               </motion.div>
@@ -493,7 +493,7 @@ export default function Hero() {
                   onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}>
                   <span>Get in Touch</span>
                 </a>
-                <a href="/resume.pdf" download="Nandan_Patel_Resume.pdf" className="btn">
+                <a href="/Nandan_Patel_Resume.pdf" download="Nandan_Patel_Resume.pdf" className="btn">
                   <span>Resume</span><span style={{ fontSize: 14 }}>↓</span>
                 </a>
               </motion.div>
